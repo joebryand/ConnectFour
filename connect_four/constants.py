@@ -7,5 +7,5 @@ STONE_SIZE = 60
 RED = (160,10,10)
 YELLOW = (140,140,10)
 
-GLOW = pygame.image.load('assets/glow.png')
+GLOW = pygame.image.load('ConnectFour/assets/glow.png')
 
