@@ -27,17 +27,24 @@ def main():
                 abs_pos = pygame.mouse.get_pos()
                 col = int((abs_pos[0]-game.window.board_rect[0]) // 70)
                 if abs_pos[0] <= 100:
-                    game.board = game.make_move(minimax(game))
+                    game.board = game.make_move(minimax(game.game_board,game.turn))
                     if game.win_check():
                         game.winner = game.turn
                     game.change_turn()
                     game.possible_moves = game.get_possible_moves()
+
+                elif abs_pos[0] >= 590:
+                    game.game_board.cancel_move()
+                    game.change_turn()
+                    game.possible_moves = game.get_possible_moves()
+
                 if -1 < col < 7:
                     game.board = game.make_move(col)
                     if game.win_check():
                         game.winner = game.turn
                     game.change_turn()
                     game.possible_moves = game.get_possible_moves()
+
         
         
 

@@ -1,6 +1,5 @@
 import math 
-from .stone import Stone
-from .constants import YELLOW, RED
+from .board import Board
 lookup_table = [[3,4,5,7,5,4,3],
                 [4,6,7,10,7,6,4],
                 [5,7,12,13,12,7,5],
@@ -11,41 +10,31 @@ lookup_table = [[3,4,5,7,5,4,3],
 points_for_win = 9999
 
 
-def minimax(game):
-    start_board = game.board.copy()
-    possible_moves = game.get_possible_moves(start_board)
+def minimax(original_board,turn):
+    test_board = Board()
+    test_board.board = original_board.board
+    test_board.moves = original_board.moves
+    possible_moves = test_board.get_possible_moves()
     print(possible_moves)
 
 
-    move = find_best_move(possible_moves,1,game,start_board)
+    move = find_best_move(possible_moves,1,turn,test_board)
 
     return move
 
-def get_temp_board(col,board,turn): 
-    if -1 < col < 7:
-        for i in range(len(board)):
-            i = len(board)-1-i
-            if board[i][col] == 0:
-                if turn == 'red':
-                    board[i][col] = Stone(RED)    
-                elif turn == 'yellow':
-                    board[i][col] = Stone(YELLOW)
-                break
-    return board
-
-
-def find_best_move(possible_moves,depth,game,start_board):
+def find_best_move(possible_moves,depth,turn,test_board):
     highest_score = -math.inf
     
     for r in possible_moves:
-        #temp_board = get_temp_board(r[0],start_board,game.turn)
+        test_board.make_move(r[0],turn)
         score = 0
         score += lookup_table[r[1]][r[0]]
-        #if game.win_check(temp_board):
-        #    score += points_for_win
+        if test_board.win_check(turn):
+            score += points_for_win
         print(score)
         if score > highest_score:
             best_move = r
             highest_score = score
+        test_board.cancel_move()
             
     return best_move[0]

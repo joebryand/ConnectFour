@@ -11,8 +11,11 @@ class Board:
                       [0,0,0,0,0,0,0],
                       [0,0,0,0,0,0,0]]
         self.moves = []
-    
 
+    def cancel_move(self):
+        last_move = self.moves.pop(len(self.moves)-1)
+        print("cancel:",last_move)
+        self.board[last_move[0]][last_move[1]] = 0
         
     def make_move(self,col,turn): 
         if -1 < col < 7:
@@ -25,6 +28,7 @@ class Board:
                     elif turn == 'yellow':
                         self.board[i][col] = Stone(YELLOW)
                     break
+                
     
     def get_possible_moves(self):
         possible_moves = []
