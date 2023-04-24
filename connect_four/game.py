@@ -11,8 +11,8 @@ class Game:
         self.reset()
 
     def reset(self):
-        self.turn = 'red'
-        self.turn_stone = Stone(RED)
+        self.turn = 'yellow'
+        self.turn_stone = Stone(YELLOW)
         self.game_board = Board()
         self.possible_moves = [(0, 5), (1, 5), (2, 5), (3, 5), (4, 5), (5, 5), (6, 5)]
         self.winner = 0

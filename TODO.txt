@@ -1,0 +1,35 @@
+----NEW-FEATURES--------------------------------------------------------------------------------------
+
+eindscherm weergeven wanneer:
+ - iemand heeft gewonnen;
+ - het bord vol is. 
+
+UI:
+    - knop voor zet terug
+    - knop voor reset
+    - knop voor Highlight
+    - knop voor admin view 
+
+UI voor admin view:
+    - laat AI level zien
+    - laat keuze AI zien met uitleg
+    - laat FPS zien
+
+.txt bestand met alle instellingen
+    - wel of geen AI
+    - kleur AI
+    - AI level
+
+Alpha Betha pruning toepassen
+    - zoekvolgorde bepalen
+
+----ERRORS--------------------------------------------------------------------------------------------
+
+AI blockt niet????
+
+------------------------------------------------------------------------------------------------------
+
+
+
+------------------------------------------------------------------------------------------------------
+
