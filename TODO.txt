@@ -28,11 +28,6 @@ Alpha Betha pruning toepassen
 AI blockt niet????
 
 ------------------------------------------------------------------------------------------------------
-File "c:\Users\pimja\Documents\HU\Q4\Code\ConnectFour\connect_four\minimax.py", line 62, in find_best_move2
-    print(bestMove[0],'\n')
-TypeError: 'NoneType' object is not subscriptable
-
-stop de game als het bord vol is
 
 ------------------------------------------------------------------------------------------------------
 

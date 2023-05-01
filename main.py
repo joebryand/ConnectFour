@@ -1,7 +1,7 @@
 import pygame
 from connect_four.constants import WIDTH, HEIGHT
 from connect_four.game import Game
-from connect_four.minimax import find_best_move2
+from connect_four.minimax import find_best_move
 
 pygame.init()
 
@@ -27,7 +27,7 @@ def main():
                 abs_pos = pygame.mouse.get_pos()
                 col = int((abs_pos[0]-game.window.board_rect[0]) // 70)
                 if abs_pos[0] <= 100:
-                    game.board = game.make_move(find_best_move2(game.game_board,game.turn))
+                    game.board = game.make_move(find_best_move(game.game_board,game.turn))
                     if game.win_check():
                         game.winner = game.turn
                     game.change_turn()
@@ -48,7 +48,6 @@ def main():
 
         WIN.fill((0,0,10))
         winner = game.update()
-
         if winner == 'yellow':
             points["yellow"] += 1
             print(points)
@@ -57,6 +56,11 @@ def main():
             points["red"] += 1
             print(points)
             game.reset()
+        
+        elif len(game.game_board.moves) == 42:
+            print(points)
+            game.reset()
+        
 
     pygame.quit()
 
