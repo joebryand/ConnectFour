@@ -9,7 +9,7 @@ lookup_table = [[ 3 , 4 , 5  , 7  , 5  , 4 , 3 ],
 
 points_for_win = 1000
 
-def find_best_move2(original_board,turn):
+def find_best_move(original_board,turn):
     test_board = Board()
     test_board.board = original_board.board
     test_board.moves = original_board.moves
@@ -18,7 +18,7 @@ def find_best_move2(original_board,turn):
     for move in test_board.get_possible_moves():
         test_board.make_move(move[0],turn)
 
-        score = minimax2(test_board,False,1,0,turn)
+        score = minimax(test_board,False,0,0,turn)
 
         test_board.cancel_move()
         print(f"Move: {move[0]} - Score: {score}")
@@ -26,11 +26,10 @@ def find_best_move2(original_board,turn):
             bestScore = score
             bestMove = move
     
-    
     print(bestMove[0],'\n')
     return bestMove[0]
 
-def minimax2(test_board, max_turn, depth, current_depth, turn):
+def minimax(test_board, max_turn, depth, current_depth, turn):
     
     if max_turn:
         if test_board.win_check(turn):
@@ -47,8 +46,8 @@ def minimax2(test_board, max_turn, depth, current_depth, turn):
             for move in test_board.get_possible_moves():
                 
                 test_board.make_move(move[0],turn)
-                scores.append(minimax2(test_board,False,depth,current_depth + 1,turn))
-                test_board.cancel_move()         
+                scores.append(minimax(test_board,False,depth,current_depth + 1,turn))
+                test_board.cancel_move()
             
             return(max(scores))
         
@@ -73,9 +72,8 @@ def minimax2(test_board, max_turn, depth, current_depth, turn):
                 turn = 'yellow'
             for move in test_board.get_possible_moves(): 
                 test_board.make_move(move[0],turn)
-                scores.append(minimax2(test_board,True,depth,current_depth + 1,turn))
+                scores.append(minimax(test_board,True,depth,current_depth + 1,turn))
                 test_board.cancel_move()
-                print(f"   Move: {move[0]} - Score: {scores[len(scores)-1]}")
             
             return(min(scores))
         

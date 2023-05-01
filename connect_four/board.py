@@ -33,7 +33,10 @@ class Board:
                         self.board[i][col] = Stone(RED)    
                     elif turn == 'yellow':
                         self.board[i][col] = Stone(YELLOW)
-                    break
+                    return True
+        
+        print("Warning! Could not make move")
+        return False
                 
     def get_possible_moves(self):
         possible_moves = []

@@ -34,7 +34,7 @@ class Game:
             self.turn_stone.change_color(RED)
 
     def make_move(self,col):
-        self.game_board.make_move(col,self.turn)
+        return self.game_board.make_move(col,self.turn)
 
     def get_possible_moves(self):
         return self.game_board.get_possible_moves()

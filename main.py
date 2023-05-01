@@ -27,11 +27,11 @@ def main():
                 abs_pos = pygame.mouse.get_pos()
                 col = int((abs_pos[0]-game.window.board_rect[0]) // 70)
                 if abs_pos[0] <= 100:
-                    game.board = game.make_move(find_best_move(game.game_board,game.turn))
-                    if game.win_check():
-                        game.winner = game.turn
-                    game.change_turn()
-                    game.possible_moves = game.get_possible_moves()
+                    if game.make_move(find_best_move(game.game_board,game.turn)):
+                        if game.win_check():
+                            game.winner = game.turn
+                        game.change_turn()
+                        game.possible_moves = game.get_possible_moves()
 
                 elif abs_pos[0] >= 590:
                     if game.game_board.cancel_move():
@@ -39,12 +39,11 @@ def main():
                     game.possible_moves = game.get_possible_moves()
 
                 if -1 < col < 7:
-                    game.board = game.make_move(col)
-                    if game.win_check():
-                        game.winner = game.turn
-                    game.change_turn()
-                    game.possible_moves = game.get_possible_moves()
-                    game.game_board.get_amound_of_possible_connect_fours()
+                    if game.make_move(col):
+                        if game.win_check():
+                            game.winner = game.turn
+                        game.change_turn()
+                        game.possible_moves = game.get_possible_moves()
 
         WIN.fill((0,0,10))
         winner = game.update()
