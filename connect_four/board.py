@@ -52,9 +52,9 @@ class Board:
 
         win = False
         #horizontaal
-        posible_start_locs = [0,1,2,3]
+        possible_start_locs = [0,1,2,3]
         for row in self.board:
-            for start_loc in posible_start_locs:
+            for start_loc in possible_start_locs:
                 if row[start_loc] != 0:
                     if row[start_loc].color == color:
                         if row[start_loc+1] != 0:
@@ -67,9 +67,9 @@ class Board:
 
 
         #verticaal
-        posible_start_locs = [0,1,2]
+        possible_start_locs = [0,1,2]
         for col in range(len(self.board[0])):
-            for start_loc in posible_start_locs:
+            for start_loc in possible_start_locs:
                 if self.board[start_loc][col] != 0:
                     if self.board[start_loc][col].color == color:
                         if self.board[start_loc+1][col] != 0:
@@ -82,9 +82,9 @@ class Board:
 
 
         #diagonaal (righttop leftbottom)
-        posible_start_locs = [[3,4,5,6],[3,4,5,6],[3,4,5,6]]
-        for row in range(len(posible_start_locs)):
-            for col in posible_start_locs[row]:
+        possible_start_locs = [[3,4,5,6],[3,4,5,6],[3,4,5,6]]
+        for row in range(len(possible_start_locs)):
+            for col in possible_start_locs[row]:
                 if self.board[row][col] != 0:
                     if self.board[row][col].color == color:
                         if self.board[row+1][col-1] != 0:
@@ -97,9 +97,9 @@ class Board:
 
 
         #diagonaal (lefttop rightbottom)
-        posible_start_locs = [[0,1,2,3],[0,1,2,3],[0,1,2,3]]
-        for row in range(len(posible_start_locs)):
-            for col in posible_start_locs[row]:
+        possible_start_locs = [[0,1,2,3],[0,1,2,3],[0,1,2,3]]
+        for row in range(len(possible_start_locs)):
+            for col in possible_start_locs[row]:
                 if self.board[row][col] != 0:
                     if self.board[row][col].color == color:
                         if self.board[row+1][col+1] != 0:
@@ -124,9 +124,9 @@ class Board:
         
         for i,color in enumerate(colors):
             #horizontal
-            posible_start_locs = [0,1,2,3]
+            possible_start_locs = [0,1,2,3]
             for row in self.board:
-                for start_loc in posible_start_locs:
+                for start_loc in possible_start_locs:
                     if row[start_loc] == 0 or row[start_loc].color == color:
                         if row[start_loc+1] == 0 or row[start_loc+1].color == color:
                             if row[start_loc+2] == 0 or row[start_loc+2].color == color:
@@ -134,9 +134,9 @@ class Board:
                                     possible_connect_fours[i] += 1
 
             #vertical
-            posible_start_locs = [0,1,2]
+            possible_start_locs = [0,1,2]
             for col in range(len(self.board[0])):
-                for start_loc in posible_start_locs:
+                for start_loc in possible_start_locs:
                     if self.board[start_loc][col] == 0 or self.board[start_loc][col].color == color:
                         if self.board[start_loc+1][col] == 0 or self.board[start_loc+1][col].color == color:
                             if self.board[start_loc+2][col] == 0 or self.board[start_loc+2][col].color == color:
@@ -144,9 +144,9 @@ class Board:
                                     possible_connect_fours[i] += 1
 
             #diagonal (righttop leftbottom)
-            posible_start_locs = [[3,4,5,6],[3,4,5,6],[3,4,5,6]]
-            for row in range(len(posible_start_locs)):
-                for col in posible_start_locs[row]:
+            possible_start_locs = [[3,4,5,6],[3,4,5,6],[3,4,5,6]]
+            for row in range(len(possible_start_locs)):
+                for col in possible_start_locs[row]:
                     if self.board[row][col] == 0 or self.board[row][col].color == color:
                         if self.board[row+1][col-1] == 0 or self.board[row+1][col-1].color == color:
                             if self.board[row+2][col-2] == 0 or self.board[row+2][col-2].color == color:
@@ -154,14 +154,15 @@ class Board:
                                     possible_connect_fours[i] += 1
 
             #diagonal (lefttop rightbottom)
-            posible_start_locs = [[0,1,2,3],[0,1,2,3],[0,1,2,3]]
-            for row in range(len(posible_start_locs)):
-                for col in posible_start_locs[row]:
+            possible_start_locs = [[0,1,2,3],[0,1,2,3],[0,1,2,3]]
+            for row in range(len(possible_start_locs)):
+                for col in possible_start_locs[row]:
                     if self.board[row][col] == 0 or self.board[row][col].color == color:
                         if self.board[row+1][col+1] == 0 or self.board[row+1][col+1].color == color:
                             if self.board[row+2][col+2] == 0 or self.board[row+2][col+2].color == color:
                                 if self.board[row+3][col+3] == 0 or self.board[row+3][col+3].color == color:
                                     possible_connect_fours[i] += 1
 
+        #print(possible_connect_fours)
         return possible_connect_fours  # amound of possible connect fours [yellow,red]
         

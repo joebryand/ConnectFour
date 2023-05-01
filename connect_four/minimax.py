@@ -49,9 +49,11 @@ def find_best_move2(original_board,turn):
     for move in test_board.get_possible_moves():
         test_board.make_move(move[0],turn)
         if turn == 'red':
-            score = minimax2_red(test_board,True,2,0,turn)
+            turn = 'yellow'
+            score = minimax2_red(test_board,False,2,0,turn)
         else:
-            score = minimax2_yellow(test_board,True,2,0,turn)
+            turn = 'red'
+            score = minimax2_yellow(test_board,False,2,0,turn)
         test_board.cancel_move()
         print(f"Move: {move[0]} - Score: { score}")
         if (score > bestScore):
@@ -66,7 +68,7 @@ def minimax2_red(test_board, max_turn, depth, current_depth, turn):
     
     if max_turn:
         if test_board.win_check(turn):
-            return points_for_win
+            return -points_for_win
         elif len(test_board.moves) == 42:
             return 0
 
@@ -79,7 +81,7 @@ def minimax2_red(test_board, max_turn, depth, current_depth, turn):
                 else:
                     turn = 'yellow'
                 scores.append(minimax2_red(test_board,False,depth,current_depth + 1,turn))
-                test_board.cancel_move()            
+                test_board.cancel_move()         
             
             return(max(scores))
         
@@ -91,7 +93,7 @@ def minimax2_red(test_board, max_turn, depth, current_depth, turn):
     else:
         if test_board.win_check(turn):
             print('hallo red')
-            return -points_for_win
+            return points_for_win
         elif len(test_board.moves) == 42:
             return 0
         elif current_depth < depth:
@@ -110,14 +112,16 @@ def minimax2_red(test_board, max_turn, depth, current_depth, turn):
         else:
             possible_connect_fours_yellow,possible_connect_fours_red = test_board.get_amound_of_possible_connect_fours()
 
-            score = possible_connect_fours_yellow - possible_connect_fours_red
+            score = possible_connect_fours_red - possible_connect_fours_yellow
             return score
 
 def minimax2_yellow(test_board, max_turn, depth, current_depth, turn):
     
     if max_turn:
-        if test_board.win_check(turn):
+        if test_board.win_check('yellow'):
             return points_for_win
+        elif test_board.win_check('red'):
+            return -points_for_win
         elif len(test_board.moves) == 42:
             return 0
         elif current_depth < depth:
@@ -129,9 +133,9 @@ def minimax2_yellow(test_board, max_turn, depth, current_depth, turn):
                 else:
                     turn = 'yellow'
                 scores.append(minimax2_yellow(test_board,False,depth,current_depth + 1,turn))
-                test_board.cancel_move()            
+                test_board.cancel_move()          
             
-            return(max(scores))
+            return(min(scores))
         
         else:
             possible_connect_fours_yellow,possible_connect_fours_red = test_board.get_amound_of_possible_connect_fours()
@@ -139,8 +143,9 @@ def minimax2_yellow(test_board, max_turn, depth, current_depth, turn):
             return score
             
     else:
-        if test_board.win_check(turn):
-            print('hallo yellow')
+        if test_board.win_check('yellow'):
+            return points_for_win
+        elif test_board.win_check('red'):
             return -points_for_win
         elif len(test_board.moves) == 42:
             return 0
@@ -155,12 +160,12 @@ def minimax2_yellow(test_board, max_turn, depth, current_depth, turn):
                 scores.append(minimax2_yellow(test_board,True,depth,current_depth + 1,turn))
                 test_board.cancel_move()
             
-            return(min(scores))
+            return(max(scores))
         
         else:
             possible_connect_fours_yellow,possible_connect_fours_red = test_board.get_amound_of_possible_connect_fours()
 
-            score = possible_connect_fours_red - possible_connect_fours_yellow
+            score = possible_connect_fours_yellow - possible_connect_fours_red
             return score
 
 

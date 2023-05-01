@@ -44,6 +44,7 @@ def main():
                         game.winner = game.turn
                     game.change_turn()
                     game.possible_moves = game.get_possible_moves()
+                    game.game_board.get_amound_of_possible_connect_fours()
 
         WIN.fill((0,0,10))
         winner = game.update()
