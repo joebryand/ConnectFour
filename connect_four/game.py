@@ -16,14 +16,23 @@ class Game:
         self.game_board = Board()
         self.possible_moves = [(0, 5), (1, 5), (2, 5), (3, 5), (4, 5), (5, 5), (6, 5)]
         self.winner = 0
+        self.gamestate = "dynamic"
+
+        self.enable_show_possible_moves = True
 
     def update(self):
-        self.win.fill((0,0,20))
-        self.window.draw(self.win,self.game_board.board)
-        self.turn_stone.draw(self.win,(50,40))
-        self.window.draw_possible_moves(self.win,self.possible_moves)
-        pygame.display.update()
-        return self.winner
+        if self.gamestate == "dynamic":
+            self.win.fill((0,0,20))
+            self.window.draw(self.win,self.game_board.board)
+            self.turn_stone.draw(self.win,(45,40))
+            if self.enable_show_possible_moves:
+                self.window.draw_possible_moves(self.win,self.possible_moves)
+            pygame.display.update()
+            return self.winner
+        
+        elif self.gamestate == "static":
+            self.window.draw_game_end_screen(self.win)
+            pygame.display.update()
     
     def change_turn(self):
         if self.turn == 'red':

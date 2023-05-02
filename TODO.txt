@@ -14,6 +14,7 @@ UI voor admin view:
     - laat AI level zien
     - laat keuze AI zien met uitleg
     - laat FPS zien
+    - laat tijd per move zien
 
 .txt bestand met alle instellingen
     - wel of geen AI
@@ -24,8 +25,6 @@ Alpha Betha pruning toepassen
     - zoekvolgorde bepalen
 
 ----ERRORS--------------------------------------------------------------------------------------------
-
-AI blockt niet????
 
 ------------------------------------------------------------------------------------------------------
 

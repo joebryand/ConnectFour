@@ -1,6 +1,6 @@
 import pygame
 
-WIDTH, HEIGHT = 690,420
+WIDTH, HEIGHT = 760,420
 STONE_SIZE = 60
 
 

@@ -18,7 +18,7 @@ def find_best_move(original_board,turn):
     for move in test_board.get_possible_moves():
         test_board.make_move(move[0],turn)
 
-        score = minimax(test_board,False,0,0,turn)
+        score = minimax(test_board,False,3,0,turn)
 
         test_board.cancel_move()
         print(f"Move: {move[0]} - Score: {score}")
