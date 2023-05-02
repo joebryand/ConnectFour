@@ -1,13 +1,5 @@
 ----NEW-FEATURES--------------------------------------------------------------------------------------
-
-eindscherm weergeven wanneer:
- - iemand heeft gewonnen;
- - het bord vol is. 
-
 UI:
-    - knop voor zet terug
-    - knop voor reset
-    - knop voor Highlight
     - knop voor admin view 
 
 UI voor admin view:
