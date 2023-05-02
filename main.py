@@ -74,18 +74,19 @@ def main():
 
 
         winner = game.update()
-        if winner == 'yellow':
-            points["yellow"] += 1
-            print(points)
-            game.gamestate = "static"
-        elif winner == 'red':
-            points["red"] += 1
-            print(points)
-            game.gamestate = "static"
-        
-        elif len(game.game_board.moves) == 42:
-            print(points)
-            game.gamestate = "static"
+        if game.gamestate == "dynamic":
+            if winner == 'yellow':
+                points["yellow"] += 1
+                print(points)
+                game.gamestate = "static"
+            elif winner == 'red':
+                points["red"] += 1
+                print(points)
+                game.gamestate = "static"
+            
+            elif len(game.game_board.moves) == 42:
+                print(points)
+                game.gamestate = "static"
         
 
     pygame.quit()
