@@ -8,7 +8,7 @@ class Window:
         self.side_bar_rect = [(0,0,self.board_rect[0]-4,HEIGHT),((self.board_rect[0]+self.board_rect[2]+4,0,WIDTH-(self.board_rect[0]+self.board_rect[2])-4,HEIGHT))]
         self.cel_width = self.board_rect[2]/7
 
-        self.in_game_buttons = [Button(590,340,160,40,"RESET"),Button(590,20,160,40,"CANCEL MOVE"),Button(590,80,160,40,"HIGHLIGHT")]
+        self.in_game_buttons = [Button(590,340,160,40,"RESET"),Button(590,20,160,40,"CANCEL MOVE"),Button(590,80,160,40,"HIGHLIGHT"),Button(590,140,160,40,"AI MOVE")]
         self.game_end_buttons = [Button(240,170,190,80,"NEW GAME")]
 
     def draw(self,win,board):

@@ -47,10 +47,17 @@ def main():
                                 game.change_turn()
                             game.possible_moves = game.get_possible_moves()
 
-                        if action == "RESET":
+                        elif action == "AI MOVE":
+                            if game.make_move(find_best_move(game.game_board,game.turn)):
+                                if game.win_check():
+                                    game.winner = game.turn
+                                game.change_turn()
+                                game.possible_moves = game.get_possible_moves()
+
+                        elif action == "RESET":
                             game.reset()
 
-                        if action == "HIGHLIGHT":
+                        elif action == "HIGHLIGHT":
                             game.enable_show_possible_moves = not game.enable_show_possible_moves
 
                     col = int((abs_pos[0]-game.window.board_rect[0]) // 70)
