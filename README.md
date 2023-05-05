@@ -3,8 +3,8 @@ Deze repository is aangemaakt voor de afstudeerstage bij Alten voor de Master HC
 
 ## libraries
 Om de code te runnen zijn de volgende libraries nodig:
-Pygame 
-math (standard in python)
+- Pygame 
+- math (standard in python)
 
 ## Hoe run je de code
 De code is aan te roepen door "main.py" te runnen. 
