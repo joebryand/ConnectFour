@@ -28,11 +28,13 @@ def find_best_move(original_board,turn):
     bestScore = -math.inf
     bestMove = None
 
+    SEARCH_DEPTH = 3
+
     # start first loop of the algorithm
     for move in test_board.get_possible_moves():
         test_board.make_move(move[0],turn)
 
-        score = minimax(test_board,False,3,turn)
+        score = minimax(test_board,False,SEARCH_DEPTH,turn)
 
         test_board.cancel_move()
         print(f"Move: {move[0]} - Score: {score}")
