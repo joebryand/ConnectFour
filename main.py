@@ -17,7 +17,7 @@ points = {"red" : 0, "yellow" : 0}
 def main():
     run = True
     clock = pygame.time.Clock()
-    print(game.game_board.get_amound_of_possible_connect_fours())
+    print(game.game_board.get_number_of_possible_connect_fours())
     while run:
         clock.tick(FPS)
         for event in pygame.event.get():
@@ -40,7 +40,6 @@ def main():
                             action = button.check_if_clicked(abs_pos)
                             if action != 0:
                                 break
-                        #print(action)
 
                         if action == "CANCEL MOVE":
                             if game.game_board.cancel_move():
@@ -74,7 +73,6 @@ def main():
                         action = button.check_if_clicked(abs_pos)
                         if action != 0:
                             break
-                    print(action)
 
                     if action == "NEW GAME":
                         game.reset()

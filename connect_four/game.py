@@ -45,6 +45,7 @@ class Game:
     def make_move(self,col):
         return self.game_board.make_move(col,self.turn)
 
+
     def get_possible_moves(self):
         return self.game_board.get_possible_moves()
 

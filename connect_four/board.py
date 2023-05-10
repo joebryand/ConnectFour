@@ -33,6 +33,7 @@ class Board:
                         self.board[i][col] = Stone(RED)    
                     elif turn == 'yellow':
                         self.board[i][col] = Stone(YELLOW)
+
                     return True
         
         print("Warning! Could not make move")
@@ -40,7 +41,7 @@ class Board:
                 
     def get_possible_moves(self):
         possible_moves = []
-        for col in range(len(self.board[0])):
+        for col in [3,2,4,1,5,0,6]:
             for row in range(len(self.board)-1,-1,-1):    
                 if self.board[row][col] == 0:
                     possible_moves.append((col,row))
@@ -119,7 +120,7 @@ class Board:
 
         return win
     
-    def get_amound_of_possible_connect_fours(self):
+    def get_number_of_possible_connect_fours(self):
  
         colors = [YELLOW,RED]
 
@@ -169,3 +170,56 @@ class Board:
         #print(possible_connect_fours)
         return possible_connect_fours  # amound of possible connect fours [yellow,red]
         
+    def get_number_of_connected_pieces(self):
+        
+        colors = [YELLOW,RED]
+
+        connected_pieces = [0,0]
+        
+        for i,color in enumerate(colors):
+            #print(i)
+            #horizontaal
+            possible_start_locs = [0,1,2,3,4,5]
+            for row in self.board:
+                for start_loc in possible_start_locs:
+                    if row[start_loc] != 0:
+                        if row[start_loc].color == color:
+                            if row[start_loc+1] != 0:
+                                if row[start_loc+1].color == color:
+                                    connected_pieces[i] += 1
+
+
+            #verticaal
+            possible_start_locs = [0,1,2,3,4]
+            for col in range(len(self.board[0])):
+                for start_loc in possible_start_locs:
+                    if self.board[start_loc][col] != 0:
+                        if self.board[start_loc][col].color == color:
+                            if self.board[start_loc+1][col] != 0:
+                                if self.board[start_loc+1][col].color == color:
+                                    connected_pieces[i] += 1
+
+
+            #diagonaal (righttop leftbottom)
+            possible_start_locs = [[1,2,3,4,5,6],[1,2,3,4,5,6],[1,2,3,4,5,6],[1,2,3,4,5,6],[1,2,3,4,5,6]]
+            for row in range(len(possible_start_locs)):
+                for col in possible_start_locs[row]:
+                    if self.board[row][col] != 0:
+                        if self.board[row][col].color == color:
+                            if self.board[row+1][col-1] != 0:
+                                if self.board[row+1][col-1].color == color:
+                                    connected_pieces[i] += 1
+
+
+            #diagonaal (lefttop rightbottom)
+            possible_start_locs = [[0,1,2,3,4,5],[0,1,2,3,4,5],[0,1,2,3,4,5],[0,1,2,3,4,5],[0,1,2,3,4,5]]
+            for row in range(len(possible_start_locs)):
+                for col in possible_start_locs[row]:
+                    if self.board[row][col] != 0:
+                        if self.board[row][col].color == color:
+                            if self.board[row+1][col+1] != 0:
+                                if self.board[row+1][col+1].color == color:
+                                    connected_pieces[i] += 1
+
+
+        return connected_pieces
