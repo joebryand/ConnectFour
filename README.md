@@ -1,5 +1,5 @@
 # ConnectFour
-Deze repository is aangemaakt voor de afstudeerstage bij Alten voor de Master HCAI. De opdracht voor het afsturen is het maken van een addaptive AI voor het spel vier op een rij. De repository bevat een zelf geschreven digitale versie van vier op een rij en hiernaast ook de AI.
+Deze repository is aangemaakt voor de afstudeerstage bij Alten voor de Master HCAI. De opdracht voor het afsturen is het maken van een addaptive AI voor het spel vier op een rij. De repository bevat een zelf geschreven digitale versie van vier op een rij en hiernaast ook de AI. Er is gekozen om Python te gebruiken als programeer taal omdat dit gebruikt wordt in de opleiding en ik hier het meeste ervaaring mee heb. Hiernaast heeft python enorm veer libraries waardoor het eenvoudiger is om het programma voor dit project te schrijven. 
 
 ## libraries
 Om de code te runnen zijn de volgende libraries nodig:
@@ -12,6 +12,6 @@ Om ervoor te zorgen dat het programma eenvoudig te runnen is, is ervoor gekozen 
 
 ## Hoe run je de code
 De code is aan te roepen door "main.py" te runnen. 
-Instellingen voor de AI kunnen verandert worden in constants.py. Hier zal later nog een .txt bestand voor worden toegevoegd.
+Instellingen voor de AI kunnen verandert worden in constants.py. Hier zal later nog een .txt bestand voor worden toegevoegd. 
 
 ...
