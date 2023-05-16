@@ -10,11 +10,11 @@ YELLOW = (140,140,10)
 GLOW = pygame.image.load('ConnectFour/assets/glow.png')
 
 
-
+DRAW = True
 
 # AI constants
 
-SEARCH_DEPTH = 6
+SEARCH_DEPTH = 3
 ALPHA_BETA_PRUNING = True
-VALUE_SYSTEM = "connected_pieces" # "possible_connect_fours" | "connected_pieces" | "random" | "combination"
+VALUE_SYSTEM = "combination" # "possible_connect_fours" | "connected_pieces" | "random" | "combination"
 

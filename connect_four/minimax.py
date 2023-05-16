@@ -13,17 +13,11 @@ import math
 import time
 import random 
 from .board import Board
-from .constants import SEARCH_DEPTH, ALPHA_BETA_PRUNING, VALUE_SYSTEM
-#lookup_table = [[ 3 , 4 , 5  , 7  , 5  , 4 , 3 ],
-#                [ 4 , 6 , 8  , 10 , 8  , 6 , 4 ],
-#                [ 5 , 8 , 11 , 13 , 11 , 8 , 5 ],
-#                [ 5 , 8 , 11 , 13 , 11 , 8 , 5 ],
-#                [ 4 , 6 , 8  , 10 , 8  , 6 , 4 ],
-#                [ 3 , 4 , 5  , 7  , 5  , 4 , 3 ]]
+from .constants import SEARCH_DEPTH, ALPHA_BETA_PRUNING#, VALUE_SYSTEM
 
 points_for_win = 1000
 
-def find_best_move(original_board,turn):
+def find_best_move(original_board,turn, VALUE_SYSTEM):
     # getting all thing ready for the algorithm
     test_board = Board()
     test_board.board = original_board.board
@@ -34,24 +28,24 @@ def find_best_move(original_board,turn):
     beta = math.inf
 
     # start first loop of the algorithm
-    before = time.time()
+    #before = time.time()
     for move in test_board.get_possible_moves():
         test_board.make_move(move[0],turn)
 
-        score = minimax(test_board,False,SEARCH_DEPTH,turn,alpha,beta,ALPHA_BETA_PRUNING)
+        score = minimax(test_board,False,SEARCH_DEPTH,turn,alpha,beta,ALPHA_BETA_PRUNING, VALUE_SYSTEM)
 
         test_board.cancel_move()
-        print(f"Move: {move[0]} - Score: {score}")
+        #print(f"Move: {move[0]} - Score: {score}")
         if (score > bestScore):
             bestScore = score
             bestMove = move
 
     # print and return the best move fount by the algorithm
-    print(time.time()-before)
-    print(bestMove[0],'\n')
+    #print(time.time()-before)
+    #print(bestMove[0],'\n')
     return bestMove[0]
 
-def minimax(test_board, max_turn, current_depth, turn, alpha, beta, ALPHA_BETA_PRUNING):
+def minimax(test_board, max_turn, current_depth, turn, alpha, beta, ALPHA_BETA_PRUNING, VALUE_SYSTEM):
     
     if max_turn:
         # check for game ending positions (win, lose or draw), because the last move is made by the opponent it could only have lost or drew on this move, so we dont look for a win.
@@ -70,7 +64,7 @@ def minimax(test_board, max_turn, current_depth, turn, alpha, beta, ALPHA_BETA_P
             for move in test_board.get_possible_moves():
                 
                 test_board.make_move(move[0],turn)
-                scores.append(minimax(test_board,False,current_depth - 1,turn, alpha, beta, ALPHA_BETA_PRUNING))
+                scores.append(minimax(test_board,False,current_depth - 1,turn, alpha, beta, ALPHA_BETA_PRUNING, VALUE_SYSTEM))
                 test_board.cancel_move()
 
                 alpha = max(alpha,scores[len(scores)-1])
@@ -97,6 +91,14 @@ def minimax(test_board, max_turn, current_depth, turn, alpha, beta, ALPHA_BETA_P
                 return score
             elif VALUE_SYSTEM == "random":
                 return random.random()
+            
+            elif VALUE_SYSTEM == "combination":
+                connected_pieces_and_possible_connect_fours_yellow,connected_pieces_and_possible_connect_fours_red = test_board.get_combination_of_connected_pieces_and_possible_connect_fours()
+                if turn == "red":
+                    score = connected_pieces_and_possible_connect_fours_yellow - connected_pieces_and_possible_connect_fours_red
+                elif turn == "yellow":
+                    score = connected_pieces_and_possible_connect_fours_red - connected_pieces_and_possible_connect_fours_yellow
+                return score
 
             
     else:
@@ -115,7 +117,7 @@ def minimax(test_board, max_turn, current_depth, turn, alpha, beta, ALPHA_BETA_P
                 turn = 'yellow'
             for move in test_board.get_possible_moves(): 
                 test_board.make_move(move[0],turn)
-                scores.append(minimax(test_board, True, current_depth - 1, turn, alpha, beta, ALPHA_BETA_PRUNING))
+                scores.append(minimax(test_board, True, current_depth - 1, turn, alpha, beta, ALPHA_BETA_PRUNING, VALUE_SYSTEM))
                 test_board.cancel_move()
             
                 beta = min(beta,scores[len(scores)-1])
@@ -144,3 +146,11 @@ def minimax(test_board, max_turn, current_depth, turn, alpha, beta, ALPHA_BETA_P
             
             elif VALUE_SYSTEM == "random":
                 return random.random()
+            
+            elif VALUE_SYSTEM == "combination":
+                connected_pieces_and_possible_connect_fours_yellow,connected_pieces_and_possible_connect_fours_red = test_board.get_combination_of_connected_pieces_and_possible_connect_fours()
+                if turn == "red":
+                    score = connected_pieces_and_possible_connect_fours_red - connected_pieces_and_possible_connect_fours_yellow
+                elif turn == "yellow":
+                    score = connected_pieces_and_possible_connect_fours_yellow - connected_pieces_and_possible_connect_fours_red
+                return score

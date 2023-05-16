@@ -1,5 +1,5 @@
 import pygame
-from .constants import WIDTH,HEIGHT,STONE_SIZE,RED,YELLOW,GLOW
+from .constants import WIDTH,HEIGHT,STONE_SIZE,GLOW
 from .button import Button
 
 class Window:

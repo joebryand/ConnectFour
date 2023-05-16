@@ -2,7 +2,7 @@ import pygame
 from .window import Window
 from .board import Board
 from .stone import Stone
-from .constants import YELLOW, RED
+from .constants import YELLOW, RED, DRAW
 
 class Game:
     def __init__(self,win):
@@ -21,18 +21,19 @@ class Game:
         self.enable_show_possible_moves = True
 
     def update(self):
-        if self.gamestate == "dynamic":
-            self.win.fill((0,0,20))
-            self.window.draw(self.win,self.game_board.board)
-            self.turn_stone.draw(self.win,(45,40))
-            if self.enable_show_possible_moves:
-                self.window.draw_possible_moves(self.win,self.possible_moves)
-            pygame.display.update()
-            return self.winner
-        
-        elif self.gamestate == "static":
-            self.window.draw_game_end_screen(self.win)
-            pygame.display.update()
+        if DRAW:
+            if self.gamestate == "dynamic":
+                self.win.fill((0,0,20))
+                self.window.draw(self.win,self.game_board.board)
+                self.turn_stone.draw(self.win,(45,40))
+                if self.enable_show_possible_moves:
+                    self.window.draw_possible_moves(self.win,self.possible_moves)
+                pygame.display.update()
+                return self.winner
+            
+            elif self.gamestate == "static":
+                self.window.draw_game_end_screen(self.win)
+                pygame.display.update()
     
     def change_turn(self):
         if self.turn == 'red':
