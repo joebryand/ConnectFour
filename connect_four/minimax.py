@@ -13,11 +13,11 @@ import math
 import time
 import random 
 from .board import Board
-from .constants import SEARCH_DEPTH, ALPHA_BETA_PRUNING#, VALUE_SYSTEM
+from .constants import SEARCH_DEPTH, ALPHA_BETA_PRUNING, VALUE_SYSTEM
 
 points_for_win = 1000
 
-def find_best_move(original_board,turn, VALUE_SYSTEM):
+def find_best_move(original_board,turn):
     # getting all thing ready for the algorithm
     test_board = Board()
     test_board.board = original_board.board
@@ -32,7 +32,7 @@ def find_best_move(original_board,turn, VALUE_SYSTEM):
     for move in test_board.get_possible_moves():
         test_board.make_move(move[0],turn)
 
-        score = minimax(test_board,False,SEARCH_DEPTH,turn,alpha,beta,ALPHA_BETA_PRUNING, VALUE_SYSTEM)
+        score = minimax(test_board,False,SEARCH_DEPTH,turn,alpha,beta,ALPHA_BETA_PRUNING)
 
         test_board.cancel_move()
         #print(f"Move: {move[0]} - Score: {score}")
@@ -45,7 +45,7 @@ def find_best_move(original_board,turn, VALUE_SYSTEM):
     #print(bestMove[0],'\n')
     return bestMove[0]
 
-def minimax(test_board, max_turn, current_depth, turn, alpha, beta, ALPHA_BETA_PRUNING, VALUE_SYSTEM):
+def minimax(test_board, max_turn, current_depth, turn, alpha, beta, ALPHA_BETA_PRUNING):
     
     if max_turn:
         # check for game ending positions (win, lose or draw), because the last move is made by the opponent it could only have lost or drew on this move, so we dont look for a win.
@@ -64,7 +64,7 @@ def minimax(test_board, max_turn, current_depth, turn, alpha, beta, ALPHA_BETA_P
             for move in test_board.get_possible_moves():
                 
                 test_board.make_move(move[0],turn)
-                scores.append(minimax(test_board,False,current_depth - 1,turn, alpha, beta, ALPHA_BETA_PRUNING, VALUE_SYSTEM))
+                scores.append(minimax(test_board,False,current_depth - 1,turn, alpha, beta, ALPHA_BETA_PRUNING))
                 test_board.cancel_move()
 
                 alpha = max(alpha,scores[len(scores)-1])
@@ -117,7 +117,7 @@ def minimax(test_board, max_turn, current_depth, turn, alpha, beta, ALPHA_BETA_P
                 turn = 'yellow'
             for move in test_board.get_possible_moves(): 
                 test_board.make_move(move[0],turn)
-                scores.append(minimax(test_board, True, current_depth - 1, turn, alpha, beta, ALPHA_BETA_PRUNING, VALUE_SYSTEM))
+                scores.append(minimax(test_board, True, current_depth - 1, turn, alpha, beta, ALPHA_BETA_PRUNING))
                 test_board.cancel_move()
             
                 beta = min(beta,scores[len(scores)-1])

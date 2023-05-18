@@ -16,5 +16,5 @@ DRAW = True
 
 SEARCH_DEPTH = 3
 ALPHA_BETA_PRUNING = True
-VALUE_SYSTEM = "combination" # "possible_connect_fours" | "connected_pieces" | "random" | "combination"
+VALUE_SYSTEM = "connected_pieces" # "possible_connect_fours" | "connected_pieces" | "random" | "combination"
 
