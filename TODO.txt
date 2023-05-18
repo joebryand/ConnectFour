@@ -1,6 +1,15 @@
 ----NEW-FEATURES--------------------------------------------------------------------------------------
+statistics:
+    - get statiscics from game
+    - save statistics
+    - read statistics
+
 UI:
-    - knop voor admin view 
+    - knop voor admin view
+    - knop voor statistics view
+
+UI voor statistics view:
+    - table with statistics
 
 UI voor admin view:
     - laat AI level zien
