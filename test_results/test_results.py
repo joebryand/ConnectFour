@@ -45,5 +45,5 @@ for row in lijstje:
     print(row)
 df = pd.DataFrame(lijstje,index= list(range(len(lijstje))),columns= ["Depth","Yellow_algorithm","Red_algorithm","Win_yellow","Win_red","Draw"])
 
-df.to_csv('Test_results_AI_vs_AI',index=False)
+df.to_csv('Test_results_AI_vs_AI.csv',index=False)
 

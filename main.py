@@ -1,9 +1,8 @@
 import pygame
-import pandas as pd
 from connect_four.constants import WIDTH, HEIGHT, PLAYER_NAME, PLAYER_AGE, SAFE_GAME, SEARCH_DEPTH
 from connect_four.game import Game
 from connect_four.minimax import find_best_move
-from statistics import Statistics
+from saved_data.statistics import Statistics
 
 pygame.init()
 
@@ -120,7 +119,7 @@ def main():
                     new_game_moves = []
                     for move in game.game_board.moves:
                         new_game_moves.append(move[1])
-                    with open("ConnectFour\saved_games.txt", "a") as saved_games:
+                    with open("ConnectFour\saved_data\saved_games.txt", "a") as saved_games:
                         saved_games.write(f"{PLAYER_AGE},{SEARCH_DEPTH},{'draw' if winner == 0 else winner},{new_game_moves}\n")
                     
     pygame.quit()
