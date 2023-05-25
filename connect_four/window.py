@@ -1,5 +1,5 @@
 import pygame
-from .constants import WIDTH,HEIGHT,STONE_SIZE,GLOW
+from .constants import WIDTH,HEIGHT,STONE_SIZE,GLOW_IMAGE
 from .button import Button
 
 class Window:
@@ -37,7 +37,7 @@ class Window:
     def draw_possible_moves(self,win,possible_moves):
         for cel in possible_moves:
             col,row = cel
-            win.blit(GLOW,(self.board_rect[0]+col*self.cel_width,self.board_rect[1]+row*self.cel_width))
+            win.blit(GLOW_IMAGE,(self.board_rect[0]+col*self.cel_width,self.board_rect[1]+row*self.cel_width))
 
     def draw_game_end_screen(self,win):
         for button in self.game_end_buttons: button.draw(win) 
