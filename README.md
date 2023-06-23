@@ -24,14 +24,18 @@ SAVE_GAME = geeft aan of het spel wordt opgeslagen. Als True word het spel opges
 
 SEARCH_DEPTH = Dit geeft aan hoeveel beurten de AI vooruit kijkt. als 0: de AI kijkt alleen naar zijn eigen eerstvolgende zet. als 1: AI kijkt naar eigen eerstvolgende en tegenstander eerstvolgende zet. etc. 
                 Hiermee wordt ook het niveau van de AI aangegeven.
+
 ALPHA_BETA_PRUNING = True: Alpha Beta pruning staat aan. False: Alpha Beta pruning staat uit. Advies laat altijd aanstaan. maakt het algorithme sneller zonder performance te verliezen. 
+
 VALUE_SYSTEM = geeft aan op basis van welke informatie uit de positie de AI de posities scored. hiervoor zijn de volgende vier opties mogelijk: 
+
                 -   "possible_connect_fours"  
                 -   "connected_pieces"  
                 -   "random"  
                 -   "combination"
 
 PLAYER_NAME = de naam van de speler die wordt opgeslagen met het spel, als SAVE_GAME = True
+
 PLAYER_AGE = de leeftijd van de speler die wordt opgeslagen met het spel, als SAVE_GAME = True
 
 
