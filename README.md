@@ -29,10 +29,10 @@ ALPHA_BETA_PRUNING = True: Alpha Beta pruning staat aan. False: Alpha Beta pruni
 
 VALUE_SYSTEM = geeft aan op basis van welke informatie uit de positie de AI de posities scored. hiervoor zijn de volgende vier opties mogelijk: 
 
-                -   "possible_connect_fours"  
-                -   "connected_pieces"  
-                -   "random"  
-                -   "combination"
+-   "possible_connect_fours"  
+-   "connected_pieces"  
+-   "random"  
+-   "combination"
 
 PLAYER_NAME = de naam van de speler die wordt opgeslagen met het spel, als SAVE_GAME = True
 
