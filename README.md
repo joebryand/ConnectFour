@@ -12,27 +12,27 @@ Om ervoor te zorgen dat het programma eenvoudig uit te voeren is, is ervoor geko
 ## Hoe run je de code
 De code is aan te roepen door "main.py" te runnen. 
 Instellingen voor de AI kunnen verandert worden in constants.py. niet alle waarden kunnen veranderd worden in de huidige versie van het programma, hieronder een beschrijving van alle constanten:
-    WIDTH, HEIGHT = de breedte en de hoogte van het scherm dat door pygame wordt gebruikt om het spel op te tekenen. deze waarden kunnen veranderd worden maar de rest schaald niet mee.
-    STONE_SIZE = De radius van de stenen. deze kan beter niet veranderd worden aangezien hier ook niet het hele spel met meeschaald. 
+WIDTH, HEIGHT = de breedte en de hoogte van het scherm dat door pygame wordt gebruikt om het spel op te tekenen. deze waarden kunnen veranderd worden maar de rest schaald niet mee.
+STONE_SIZE = De radius van de stenen. deze kan beter niet veranderd worden aangezien hier ook niet het hele spel met meeschaald. 
 
-    RED = Dit is de RGB code voor de rode kleur gebruikt in het spel.
-    YELLOW = Dit is de RGB code voor de gele kleur gebruikt in het spel.
+RED = Dit is de RGB code voor de rode kleur gebruikt in het spel.
+YELLOW = Dit is de RGB code voor de gele kleur gebruikt in het spel.
 
-    GLOW_IMAGE = Dit is de afbeelding die wordt gebruikt in het spel om mogelijke zetten aan te geven.
+GLOW_IMAGE = Dit is de afbeelding die wordt gebruikt in het spel om mogelijke zetten aan te geven.
 
-    SAVE_GAME = geeft aan of het spel wordt opgeslagen. Als True word het spel opgeslagen met PLAYER_NAME,PLAYER_AGE,SEARCH_DEPTH,player_win,moves in saved_games.txt 
+SAVE_GAME = geeft aan of het spel wordt opgeslagen. Als True word het spel opgeslagen met PLAYER_NAME,PLAYER_AGE,SEARCH_DEPTH,player_win,moves in saved_games.txt 
 
-    SEARCH_DEPTH = Dit geeft aan hoeveel beurten de AI vooruit kijkt. als 0: de AI kijkt alleen naar zijn eigen eerstvolgende zet. als 1: AI kijkt naar eigen eerstvolgende en tegenstander eerstvolgende zet. etc. 
-                   Hiermee wordt ook het niveau van de AI aangegeven.
-    ALPHA_BETA_PRUNING = True: Alpha Beta pruning staat aan. False: Alpha Beta pruning staat uit. Advies laat altijd aanstaan. maakt het algorithme sneller zonder performance te verliezen. 
-    VALUE_SYSTEM = geeft aan op basis van welke informatie uit de positie de AI de posities scored. hiervoor zijn de volgende vier opties mogelijk: 
-                    -   "possible_connect_fours"  
-                    -   "connected_pieces"  
-                    -   "random"  
-                    -   "combination"
+SEARCH_DEPTH = Dit geeft aan hoeveel beurten de AI vooruit kijkt. als 0: de AI kijkt alleen naar zijn eigen eerstvolgende zet. als 1: AI kijkt naar eigen eerstvolgende en tegenstander eerstvolgende zet. etc. 
+                Hiermee wordt ook het niveau van de AI aangegeven.
+ALPHA_BETA_PRUNING = True: Alpha Beta pruning staat aan. False: Alpha Beta pruning staat uit. Advies laat altijd aanstaan. maakt het algorithme sneller zonder performance te verliezen. 
+VALUE_SYSTEM = geeft aan op basis van welke informatie uit de positie de AI de posities scored. hiervoor zijn de volgende vier opties mogelijk: 
+                -   "possible_connect_fours"  
+                -   "connected_pieces"  
+                -   "random"  
+                -   "combination"
 
-    PLAYER_NAME = de naam van de speler die wordt opgeslagen met het spel, als SAVE_GAME = True
-    PLAYER_AGE = de leeftijd van de speler die wordt opgeslagen met het spel, als SAVE_GAME = True
+PLAYER_NAME = de naam van de speler die wordt opgeslagen met het spel, als SAVE_GAME = True
+PLAYER_AGE = de leeftijd van de speler die wordt opgeslagen met het spel, als SAVE_GAME = True
 
 
 ## Hoe kan de code gebruikt worden
