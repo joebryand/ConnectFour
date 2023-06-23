@@ -11,7 +11,6 @@ class Button:
         self.border = 2
         self.font = pygame.font.Font('freesansbold.ttf', 18)
 
-
     def check_if_clicked(self, pos):
         x_pos,y_pos = pos
         if x_pos > self.x and x_pos < self.x + self.width and y_pos > self.y and y_pos < self.y + self.height:
@@ -26,3 +25,21 @@ class Button:
         textRect = text.get_rect()
         textRect.center = ((self.x)+(self.width)//2,(self.y)+(self.height)//2)
         win.blit(text, textRect)
+
+class Text:
+    def __init__(self, x, y, width, height, txt_color, txt_size, text):
+        self.x = x
+        self.y = y
+        self.width = width
+        self.height = height
+        self.txt_color = txt_color
+        self.text = text
+
+        self.font = pygame.font.Font('freesansbold.ttf', txt_size)
+
+    def draw(self, win):
+        text = self.font.render(self.text, True,self.txt_color)
+        textRect = text.get_rect()
+        textRect.center = ((self.x)+(self.width)//2,(self.y)+(self.height)//2)
+        win.blit(text, textRect)
+

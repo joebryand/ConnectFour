@@ -10,7 +10,6 @@
 #       is False because we want to minimize the result. each consist of the same three parts further explained in the code.
 
 import math 
-import time
 import random 
 from .board import Board
 from .constants import SEARCH_DEPTH, ALPHA_BETA_PRUNING, VALUE_SYSTEM
@@ -35,14 +34,14 @@ def find_best_move(original_board,turn):
         score = minimax(test_board,False,SEARCH_DEPTH,turn,alpha,beta,ALPHA_BETA_PRUNING)
 
         test_board.cancel_move()
-        #print(f"Move: {move[0]} - Score: {score}")
+        print(f"Move: {move[0]} - Score: {score}")
         if (score > bestScore):
             bestScore = score
             bestMove = move
 
     # print and return the best move fount by the algorithm
     #print(time.time()-before)
-    #print(bestMove[0],'\n')
+    print(bestMove[0],'\n')
     return bestMove[0]
 
 def minimax(test_board, max_turn, current_depth, turn, alpha, beta, ALPHA_BETA_PRUNING):

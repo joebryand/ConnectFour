@@ -1,6 +1,6 @@
 import pygame
-from .constants import WIDTH,HEIGHT,STONE_SIZE,GLOW_IMAGE
-from .button import Button
+from .constants import WIDTH,HEIGHT,STONE_SIZE,GLOW_IMAGE, SEARCH_DEPTH,PLAYER_NAME
+from .UI import Button, Text
 
 class Window:
     def __init__(self):
@@ -9,6 +9,7 @@ class Window:
         self.cel_width = self.board_rect[2]/7
 
         self.in_game_buttons = [Button(590,340,160,40,"RESET"),Button(590,20,160,40,"CANCEL MOVE"),Button(590,80,160,40,"HIGHLIGHT"),Button(590,140,160,40,"AI MOVE")]
+        self.in_game_text = [Text(0,HEIGHT-75,90,20,(0,0,0),12,f'Player name:'),Text(0,HEIGHT-60,90,20,(0,0,0),12,f'{PLAYER_NAME}'),Text(0,HEIGHT-30,90,20,(0,0,0),12,f'AI level: {SEARCH_DEPTH}')]
         self.game_end_buttons = [Button(240,170,190,80,"NEW GAME")]
 
     def draw(self,win,board):
@@ -16,6 +17,7 @@ class Window:
         self.draw_side_bar(win)  
         self.draw_stones(win,board)
         for button in self.in_game_buttons: button.draw(win) 
+        for text in self.in_game_text: text.draw(win) 
 
     def draw_board(self,win):
         pygame.draw.rect(win,(30,30,120),self.board_rect)

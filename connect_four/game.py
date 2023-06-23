@@ -28,7 +28,6 @@ class Game:
             if self.enable_show_possible_moves:
                 self.window.draw_possible_moves(self.win,self.possible_moves)
             pygame.display.update()
-            return self.winner
         
         elif self.gamestate == "game_over":
             self.window.draw_game_end_screen(self.win)
@@ -44,7 +43,6 @@ class Game:
 
     def make_move(self,col):
         return self.game_board.make_move(col,self.turn)
-
 
     def get_possible_moves(self):
         return self.game_board.get_possible_moves()
